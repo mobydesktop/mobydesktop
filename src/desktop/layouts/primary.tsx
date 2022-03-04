@@ -2,7 +2,7 @@ import styled from "styled-components"
 import MobyLogo from "../../assets/images/moby.svg"
 import { FaBox, FaBoxes, FaCogs, FaGlobe, FaHome, FaImage, FaLayerGroup, FaRegImages, FaUser, FaUserCircle } from "react-icons/fa"
 
-const PrimaryLayout = ({ user, content }: { user: string | undefined, content: JSX.Element | JSX.Element[] | undefined }) => {
+const PrimaryLayout = ({ user, children }: { user: string | undefined, children: JSX.Element | JSX.Element[] | undefined }) => {
   return <PrimaryLayoutStyle>
     <div className="sidebar">
       <div className="top">
@@ -28,7 +28,7 @@ const PrimaryLayout = ({ user, content }: { user: string | undefined, content: J
       </div>
     </div>
     <div className="content">
-      {content}
+      {children}
     </div>
   </PrimaryLayoutStyle>
 }
@@ -38,10 +38,18 @@ const defaultPadding = '30px'
 const PrimaryLayoutStyle = styled.div`
   display: flex;
   align-items: flex-start;
+  background: #485563;
+
+  .content {
+    flex: 1;
+    margin: 50px;
+  }
 
   .sidebar {
     width: 300px;
     height: 100vh;
+    border-right: #28394b solid 1px;
+    box-shadow: rgba(0,0,0,.2) 5px 0px 10px;
 
     background: #485563;  /* fallback for old browsers */
     background: -webkit-linear-gradient(100deg, #29323c, #485563);  /* Chrome 10-25, Safari 5.1-6 */
